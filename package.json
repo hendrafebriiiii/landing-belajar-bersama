@@ -1,0 +1,12 @@
+{
+  "name": "belajar-bersama-landing",
+  "version": "1.0.0",
+  "description": "Landing page untuk website Belajar Bersama untuk Masa Depan",
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./public/style.css",
+    "watch": "tailwindcss -i ./src/input.css -o ./public/style.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.7"
+  }
+}

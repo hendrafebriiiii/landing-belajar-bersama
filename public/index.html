@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Bersama untuk Masa Depan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-white">
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-blue-600 text-white px-3 py-1 rounded-lg font-bold text-xl">BB</div>
+                <h1 class="text-2xl font-bold text-gray-800">Belajar Bersama</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#tentang" class="text-gray-700 hover:text-blue-600 font-medium">Tentang</a>
+                <a href="#fitur" class="text-gray-700 hover:text-blue-600 font-medium">Fitur</a>
+                <a href="#manfaat" class="text-gray-700 hover:text-blue-600 font-medium">Manfaat</a>
+                <button onclick="openLoginModal()" class="px-6 py-2 text-blue-600 border-2 border-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition">
+                    Login
+                </button>
+                <button onclick="openRegisterModal()" class="px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition">
+                    Daftar
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-animated text-white py-20 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full animate-float"></div>
+            <div class="absolute bottom-20 right-20 w-40 h-40 bg-white rounded-full animate-float delay-300"></div>
+        </div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-5xl font-bold mb-6 animate-fade-in-down">Belajar Bersama untuk Masa Depan</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto text-blue-100 animate-fade-in-up">
+                Platform pembelajaran online terpadu yang membawa Anda menuju kesuksesan akademik dan profesional dengan dukungan komunitas global.
+            </p>
+            <div class="flex justify-center gap-4 animate-scale-in">
+                <button onclick="openRegisterModal()" class="px-8 py-3 bg-white text-blue-600 rounded-lg font-bold text-lg hover:bg-blue-50 transition btn-animate hover:shadow-2xl">
+                    Daftar Sekarang
+                </button>
+                <a href="quiz.html" class="px-8 py-3 bg-green-600 text-white rounded-lg font-bold text-lg hover:bg-green-700 transition btn-animate hover:shadow-2xl inline-flex items-center gap-2">
+                    Coba Quiz IPS
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="fitur" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h3 class="text-4xl font-bold text-center mb-16 text-gray-800 animate-fade-in-down">Fitur Unggulan</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg card-hover animate-fade-in-up animate-scale-in">
+                    <div class="text-4xl mb-4 animate-float">📚</div>
+                    <h4 class="text-xl font-bold mb-4 text-gray-800">Ribuan Kursus</h4>
+                    <p class="text-gray-600">Akses ribuan kursus berkualitas tinggi dari instruktur berpengalaman di berbagai bidang ilmu.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg card-hover animate-fade-in-up animate-scale-in delay-100">
+                    <div class="text-4xl mb-4 animate-float delay-100">👨‍🏫</div>
+                    <h4 class="text-xl font-bold mb-4 text-gray-800">Mentor Profesional</h4>
+                    <p class="text-gray-600">Belajar langsung dari para ahli dan profesional di bidangnya masing-masing dengan pengalaman internasional.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg card-hover animate-fade-in-up animate-scale-in delay-200">
+                    <div class="text-4xl mb-4 animate-float delay-200">🎓</div>
+                    <h4 class="text-xl font-bold mb-4 text-gray-800">Sertifikat Resmi</h4>
+                    <p class="text-gray-600">Dapatkan sertifikat yang diakui industri setelah menyelesaikan setiap kursus dengan sempurna.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg card-hover animate-fade-in-up animate-scale-in delay-300">
+                    <div class="text-4xl mb-4 animate-float delay-300">💬</div>
+                    <h4 class="text-xl font-bold mb-4 text-gray-800">Komunitas Aktif</h4>
+                    <p class="text-gray-600">Bergabunglah dengan ribuan pelajar lainnya dan saling berbagi pengetahuan dalam komunitas yang supportif.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg card-hover animate-fade-in-up animate-scale-in delay-400">
+                    <div class="text-4xl mb-4 animate-float delay-400">📱</div>
+                    <h4 class="text-xl font-bold mb-4 text-gray-800">Akses Fleksibel</h4>
+                    <p class="text-gray-600">Belajar kapan saja dan di mana saja melalui aplikasi mobile atau web browser favorit Anda.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg card-hover animate-fade-in-up animate-scale-in delay-500">
+                    <div class="text-4xl mb-4 animate-float delay-500">🎯</div>
+                    <h4 class="text-xl font-bold mb-4 text-gray-800">Pembelajaran Terukur</h4>
+                    <p class="text-gray-600">Pantau progres belajar Anda dengan dashboard yang detail dan trackable untuk setiap pencapaian.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="manfaat" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-4xl font-bold mb-8 text-gray-800">Mengapa Memilih Kami?</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4">
+                            <span class="text-2xl text-green-500">✓</span>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-2">Konten Terkini</h4>
+                                <p class="text-gray-600">Materi pembelajaran selalu diperbarui mengikuti perkembangan industri terkini.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-2xl text-green-500">✓</span>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-2">Harga Terjangkau</h4>
+                                <p class="text-gray-600">Berbagai paket berlangganan dengan harga yang kompetitif dan terjangkau untuk semua kalangan.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-2xl text-green-500">✓</span>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-2">Dukungan 24/7</h4>
+                                <p class="text-gray-600">Tim support kami siap membantu Anda kapan saja dengan respons cepat dan solusi efektif.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-2xl text-green-500">✓</span>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-2">Garansi Uang Kembali</h4>
+                                <p class="text-gray-600">Jaminan kepuasan 100% dengan kebijakan pengembalian dana dalam 30 hari pertama.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg p-10 text-white">
+                    <h4 class="text-3xl font-bold mb-6">Statistik Kami</h4>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-5xl font-bold">1M+</p>
+                            <p class="text-blue-100 text-lg">Siswa Aktif</p>
+                        </div>
+                        <div>
+                            <p class="text-5xl font-bold">500+</p>
+                            <p class="text-blue-100 text-lg">Kursus Tersedia</p>
+                        </div>
+                        <div>
+                            <p class="text-5xl font-bold">95%</p>
+                            <p class="text-blue-100 text-lg">Tingkat Kepuasan</p>
+                        </div>
+                        <div>
+                            <p class="text-5xl font-bold">50+</p>
+                            <p class="text-blue-100 text-lg">Negara</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-4xl font-bold mb-6">Siap Memulai Perjalanan Belajar Anda?</h3>
+            <p class="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
+                Bergabunglah dengan jutaan pelajar yang telah mengubah hidup mereka melalui pendidikan berkualitas bersama kami.
+            </p>
+            <div class="flex justify-center gap-4">
+                <button onclick="openRegisterModal()" class="px-8 py-3 bg-white text-blue-600 rounded-lg font-bold text-lg hover:bg-blue-50 transition">
+                    Daftar Sekarang
+                </button>
+                <button onclick="openLoginModal()" class="px-8 py-3 border-2 border-white text-white rounded-lg font-bold text-lg hover:bg-white hover:text-blue-600 transition">
+                    Login
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h5 class="font-bold text-lg mb-4">Tentang Kami</h5>
+                    <p class="text-gray-400 text-sm">Platform pembelajaran online terdepan yang berkomitmen meningkatkan kualitas pendidikan.</p>
+                </div>
+                <div>
+                    <h5 class="font-bold text-lg mb-4">Navigasi</h5>
+                    <ul class="text-gray-400 text-sm space-y-2">
+                        <li><a href="#" class="hover:text-white">Home</a></li>
+                        <li><a href="#fitur" class="hover:text-white">Fitur</a></li>
+                        <li><a href="#manfaat" class="hover:text-white">Manfaat</a></li>
+                        <li><a href="#" class="hover:text-white">Kontak</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold text-lg mb-4">Dukungan</h5>
+                    <ul class="text-gray-400 text-sm space-y-2">
+                        <li><a href="#" class="hover:text-white">Pusat Bantuan</a></li>
+                        <li><a href="#" class="hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white">Kebijakan Privasi</a></li>
+                        <li><a href="#" class="hover:text-white">Syarat & Ketentuan</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold text-lg mb-4">Ikuti Kami</h5>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl">f</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl">𝕏</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl">📷</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl">in</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8">
+                <p class="text-gray-400 text-sm text-center">
+                    &copy; 2024 Belajar Bersama untuk Masa Depan. Semua hak dilindungi.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Login -->
+    <div id="loginModal" class="modal-backdrop" onclick="closeLoginModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <span>Masuk ke Akun Anda</span>
+                <button class="modal-close" onclick="closeLoginModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm" onsubmit="handleLoginSubmit(event)">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" placeholder="Masukkan email Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Kata Sandi</label>
+                        <input type="password" id="loginPassword" placeholder="Masukkan kata sandi Anda" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Masuk</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <p>Belum memiliki akun? <button onclick="switchToRegister()">Daftar di sini</button></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Register -->
+    <div id="registerModal" class="modal-backdrop" onclick="closeRegisterModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <span>Buat Akun Baru</span>
+                <button class="modal-close" onclick="closeRegisterModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm" onsubmit="handleRegisterSubmit(event)">
+                    <div class="form-group">
+                        <label for="registerName">Nama Lengkap</label>
+                        <input type="text" id="registerName" placeholder="Masukkan nama lengkap Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" placeholder="Masukkan email Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Kata Sandi</label>
+                        <input type="password" id="registerPassword" placeholder="Masukkan kata sandi" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerConfirmPassword">Konfirmasi Kata Sandi</label>
+                        <input type="password" id="registerConfirmPassword" placeholder="Konfirmasi kata sandi Anda" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Daftar</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <p>Sudah punya akun? <button onclick="switchToLogin()">Masuk di sini</button></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
