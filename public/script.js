@@ -72,7 +72,7 @@ function handleLoginSubmit(event) {
         document.getElementById('loginForm').reset();
         closeLoginModal();
         setTimeout(() => {
-            window.location.href = 'quiz.html';
+            window.location.href = 'user.html';
         }, 500);
         return;
     }
@@ -101,9 +101,9 @@ function handleRegisterSubmit(event) {
         email: email,
         registeredDate: new Date().toISOString(),
         active: true,
-        quizCompleted: false,
-        quizScore: null,
-        quizAttempts: []
+        userCompleted: false,
+        userScore: null,
+        userAttempts: []
     };
     
     // Save to localStorage

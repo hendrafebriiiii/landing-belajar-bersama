@@ -61,11 +61,11 @@ function renderUserTable() {
             '<span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-semibold">Aktif</span>' :
             '<span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-semibold">Tidak Aktif</span>';
         
-        const quizBadge = user.quizCompleted ?
+        const userBadge = user.userCompleted ?
             '<span class="text-green-600 font-semibold">✓ Selesai</span>' :
             '<span class="text-gray-400">Belum</span>';
         
-        const scoreDisplay = user.quizScore ? `${user.quizScore}%` : '-';
+        const scoreDisplay = user.userScore ? `${user.userScore}%` : '-';
         
         row.innerHTML = `
             <td class="px-6 py-4 text-gray-800">${index + 1}</td>
@@ -73,7 +73,7 @@ function renderUserTable() {
             <td class="px-6 py-4 text-gray-600">${user.email}</td>
             <td class="px-6 py-4 text-gray-600">${registrationDate}</td>
             <td class="px-6 py-4">${statusBadge}</td>
-            <td class="px-6 py-4">${quizBadge}</td>
+            <td class="px-6 py-4">${userBadge}</td>
             <td class="px-6 py-4 font-semibold text-blue-600">${scoreDisplay}</td>
             <td class="px-6 py-4">
                 <div class="flex gap-2">
@@ -97,7 +97,7 @@ function viewUserDetail(userId) {
     if (!user) return;
     
     const registrationDate = new Date(user.registeredDate).toLocaleDateString('id-ID');
-    const quizAttempts = user.quizAttempts ? user.quizAttempts.length : 0;
+    const userAttempts = user.userAttempts ? user.userAttempts.length : 0;
     
     let detailHTML = `
         <div class="grid grid-cols-2 gap-4">
@@ -118,36 +118,36 @@ function viewUserDetail(userId) {
                 <p class="text-gray-800">${registrationDate}</p>
             </div>
             <div>
-                <h4 class="font-semibold text-gray-600 mb-2">Quiz Diselesaikan</h4>
-                <p class="text-lg font-bold text-blue-600">${user.quizCompleted ? 'Ya ✓' : 'Belum'}</p>
+                <h4 class="font-semibold text-gray-600 mb-2">User Diselesaikan</h4>
+                <p class="text-lg font-bold text-blue-600">${user.userCompleted ? 'Ya ✓' : 'Belum'}</p>
             </div>
     `;
     
-    if (user.quizCompleted && user.quizScore) {
+    if (user.userCompleted && user.userScore) {
         detailHTML += `
             <div>
-                <h4 class="font-semibold text-gray-600 mb-2">Skor Quiz</h4>
-                <p class="text-lg font-bold text-green-600">${user.quizScore}%</p>
+                <h4 class="font-semibold text-gray-600 mb-2">Skor User</h4>
+                <p class="text-lg font-bold text-green-600">${user.userScore}%</p>
             </div>
         `;
     }
     
     detailHTML += `
             <div class="col-span-2">
-                <h4 class="font-semibold text-gray-600 mb-2">Percobaan Quiz</h4>
-                <p class="text-gray-800">${quizAttempts} kali</p>
+                <h4 class="font-semibold text-gray-600 mb-2">Percobaan User</h4>
+                <p class="text-gray-800">${userAttempts} kali</p>
             </div>
         </div>
     `;
     
-    if (user.quizAttempts && user.quizAttempts.length > 0) {
+    if (user.userAttempts && user.userAttempts.length > 0) {
         detailHTML += `
             <div class="mt-6 pt-6 border-t border-gray-300">
-                <h4 class="font-semibold text-gray-800 mb-4">Riwayat Percobaan Quiz</h4>
+                <h4 class="font-semibold text-gray-800 mb-4">Riwayat Percobaan User</h4>
                 <div class="space-y-3">
         `;
         
-        user.quizAttempts.forEach((attempt, index) => {
+        user.userAttempts.forEach((attempt, index) => {
             const attemptDate = new Date(attempt.date).toLocaleDateString('id-ID');
             detailHTML += `
                 <div class="bg-gray-100 p-3 rounded-lg">
@@ -231,13 +231,13 @@ function setupSearchFilter() {
 function updateDashboardStats() {
     const totalUsers = allUsers.length;
     const activeUsers = allUsers.filter(u => u.active).length;
-    const quizCompleted = allUsers.filter(u => u.quizCompleted).length;
+    const quizCompleted = allUsers.filter(u => u.userCompleted).length;
     
     let totalScore = 0;
     let scoreCount = 0;
     allUsers.forEach(user => {
-        if (user.quizScore) {
-            totalScore += user.quizScore;
+        if (user.userScore) {
+            totalScore += user.userScore;
             scoreCount++;
         }
     });
@@ -246,7 +246,7 @@ function updateDashboardStats() {
     
     document.getElementById('totalUsers').textContent = totalUsers;
     document.getElementById('activeUsers').textContent = activeUsers;
-    document.getElementById('quizCompleted').textContent = quizCompleted;
+    document.getElementById('userCompleted').textContent = quizCompleted;
     document.getElementById('averageScore').textContent = averageScore + '%';
 }
 
@@ -257,13 +257,13 @@ function exportData() {
         return;
     }
     
-    let csv = 'No,Nama,Email,Tanggal Daftar,Status,Quiz Selesai,Skor\n';
+    let csv = 'No,Nama,Email,Tanggal Daftar,Status,User Selesai,Skor\n';
     
     allUsers.forEach((user, index) => {
         const registrationDate = new Date(user.registeredDate).toLocaleDateString('id-ID');
         const status = user.active ? 'Aktif' : 'Tidak Aktif';
-        const quizStatus = user.quizCompleted ? 'Ya' : 'Tidak';
-        const score = user.quizScore || '-';
+        const quizStatus = user.userCompleted ? 'Ya' : 'Tidak';
+        const score = user.userScore || '-';
         
         csv += `${index + 1},"${user.name}","${user.email}","${registrationDate}","${status}","${quizStatus}","${score}"\n`;
     });
@@ -290,9 +290,9 @@ function addSampleData() {
             email: 'budi.santoso@email.com',
             registeredDate: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
             active: true,
-            quizCompleted: true,
-            quizScore: 85,
-            quizAttempts: [
+            userCompleted: true,
+            userScore: 85,
+            userAttempts: [
                 { date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(), score: 75 },
                 { date: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(), score: 85 }
             ]
@@ -303,9 +303,9 @@ function addSampleData() {
             email: 'siti.nurhaliza@email.com',
             registeredDate: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
             active: true,
-            quizCompleted: true,
-            quizScore: 92,
-            quizAttempts: [
+            userCompleted: true,
+            userScore: 92,
+            userAttempts: [
                 { date: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(), score: 92 }
             ]
         },
@@ -315,9 +315,9 @@ function addSampleData() {
             email: 'ahmad.wijaya@email.com',
             registeredDate: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
             active: true,
-            quizCompleted: false,
-            quizScore: null,
-            quizAttempts: []
+            userCompleted: false,
+            userScore: null,
+            userAttempts: []
         },
         {
             id: 'user_' + Date.now() + '_4',
@@ -325,9 +325,9 @@ function addSampleData() {
             email: 'rina.dewi@email.com',
             registeredDate: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
             active: true,
-            quizCompleted: true,
-            quizScore: 78,
-            quizAttempts: [
+            userCompleted: true,
+            userScore: 78,
+            userAttempts: [
                 { date: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(), score: 78 }
             ]
         },
@@ -337,9 +337,9 @@ function addSampleData() {
             email: 'joko.pratama@email.com',
             registeredDate: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
             active: true,
-            quizCompleted: true,
-            quizScore: 88,
-            quizAttempts: [
+            userCompleted: true,
+            userScore: 88,
+            userAttempts: [
                 { date: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString(), score: 88 }
             ]
         }

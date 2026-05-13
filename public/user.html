@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User IPS - Belajar Bersama</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="bg-blue-600 text-white px-3 py-1 rounded-lg font-bold text-xl">BB</div>
+                <h1 class="text-2xl font-bold text-gray-800">Belajar Bersama</h1>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium">← Kembali ke Home</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Exam Header Info Bar -->
+    <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white sticky top-16 z-40 py-4 px-6 shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div>
+                <h2 class="text-lg font-bold">Simulasi CAT IPS (Ilmu Pengetahuan Sosial)</h2>
+                <p class="text-sm text-blue-100">Total: 10 soal | Durasi: 10 menit</p>
+            </div>
+            <div class="flex items-center gap-8">
+                <div class="text-center">
+                    <p class="text-sm text-blue-100">Dijawab</p>
+                    <p class="text-2xl font-bold"><span id="answeredCount">0</span>/10</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-sm text-blue-100">Sisa Waktu</p>
+                    <p class="text-3xl font-bold font-mono" id="timerDisplay">10:00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Exam Container -->
+    <div class="flex max-w-7xl mx-auto px-6 py-8 gap-6">
+        <!-- Left Side: Questions -->
+        <div class="flex-1">
+            <!-- User Form -->
+            <form id="userForm" class="space-y-6">
+                <!-- Questions will be rendered by JavaScript -->
+            </form>
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between items-center mt-8 gap-4">
+                <button type="button" onclick="goToPreviousQuestion()" class="px-6 py-3 bg-gray-600 text-white rounded-lg font-semibold hover:bg-gray-700 transition disabled:opacity-50" id="prevBtn">
+                    ← Sebelumnya
+                </button>
+                <div class="text-center">
+                    <p class="text-sm text-gray-600">Soal <span id="currentQuestionNumber">1</span> dari 10</p>
+                </div>
+                <button type="button" onclick="goToNextQuestion()" class="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition disabled:opacity-50" id="nextBtn">
+                    Berikutnya →
+                </button>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="mt-8 bg-yellow-50 border-2 border-yellow-200 rounded-lg p-6">
+                <p class="text-gray-700 mb-4">
+                    <strong>Perhatian:</strong> Pastikan Anda telah menjawab semua soal sebelum mengumpulkan jawaban. Anda tidak dapat mengubah jawaban setelah mengumpulkan!
+                </p>
+                <button type="submit" form="userForm" class="w-full px-6 py-3 bg-green-600 text-white rounded-lg font-bold text-lg hover:bg-green-700 transition">
+                    ✓ Kumpulkan Jawaban
+                </button>
+            </div>
+        </div>
+
+        <!-- Right Side: Question Navigator Panel -->
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="bg-white rounded-lg shadow-lg p-8 card-hover animate-fade-in-up" style="animation-delay: 0.7s">
+                    <h3 class="text-lg font-bold text-gray-800 mb-6">7. Siapa presiden Indonesia pertama?</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition">
+                            <input type="radio" name="q7" value="a" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 text-gray-700">A. Soekarno</span>
+                        </label>
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition">
+                            <input type="radio" name="q7" value="b" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 text-gray-700">B. Mohammad Hatta</span>
+                        </label>
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition">
+                            <input type="radio" name="q7" value="c" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 text-gray-700">C. Suharto</span>
+                        </label>
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition">
+                            <input type="radio" name="q7" value="d" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 text-gray-700">D. B.J. Habibie</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="bg-white rounded-lg shadow-lg p-8 card-hover animate-fade-in-up" style="animation-delay: 0.8s">
+                    <h3 class="text-lg font-bold text-gray-800 mb-6">8. Apa singkatan ASEAN?</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition">
+                            <input type="radio" name="q8" value="a" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 text-gray-700">A. Association of Southeast Asian Nations</span>
+                        </label>
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition">
+                            <input type="radio" name="q8" value="b" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 text-gray-700">B. Asian Economic Collaboration Nations</span>
+                        </label>
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition">
+                            <input type="radio" name="q8" value="c" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 text-gray-700">C. Alliance of Southeast Asian Nations</span>
+                        </label>
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition">
+                            <input type="radio" name="q8" value="d" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 text-gray-700">D. Asiatic Southeast Agreement Nations</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 9 -->
+                <div class="bg-white rounded-lg shadow-lg p-8 card-hover animate-fade-in-up" style="animation-delay: 0.9s">
+                    <h3 class="text-lg font-bold text-gray-800 mb-6">9. Kapan Indonesia menjadi anggota PBB?</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition">
+                            <input type="radio" name="q9" value="a" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 text-gray-700">A. 1945</span>
+                        </label>
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition">
+                            <input type="radio" name="q9" value="b" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 text-gray-700">B. 1948</span>
+                        </label>
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition">
+                            <input type="radio" name="q9" value="c" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 text-gray-700">C. 1950</span>
+                        </label>
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition">
+                            <input type="radio" name="q9" value="d" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 text-gray-700">D. 1955</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 10 -->
+                <div class="bg-white rounded-lg shadow-lg p-8 card-hover animate-fade-in-up" style="animation-delay: 1s">
+                    <h3 class="text-lg font-bold text-gray-800 mb-6">10. Apa arti demokrasi?</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition">
+                            <input type="radio" name="q10" value="a" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 text-gray-700">A. Pemerintahan oleh satu orang</span>
+                        </label>
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition">
+                            <input type="radio" name="q10" value="b" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 text-gray-700">B. Pemerintahan oleh rakyat</span>
+                        </label>
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition">
+                            <input type="radio" name="q10" value="c" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 text-gray-700">C. Pemerintahan oleh militer</span>
+                        </label>
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition">
+                            <input type="radio" name="q10" value="d" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 text-gray-700">D. Pemerintahan oleh agama</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="flex justify-center gap-4 pt-8">
+                    <button type="submit" class="px-8 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg font-bold text-lg hover:shadow-lg transition">
+                        Selesai & Lihat Skor
+                    </button>
+                    <button type="reset" class="px-8 py-3 bg-gray-400 text-white rounded-lg font-bold text-lg hover:bg-gray-500 transition">
+                        Reset Jawaban
+                    </button>
+                </div>
+            </form>
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between items-center mt-8 gap-4">
+                <button onclick="goToPreviousQuestion()" class="px-6 py-3 bg-gray-600 text-white rounded-lg font-semibold hover:bg-gray-700 transition disabled:opacity-50" id="prevBtn">
+                    ← Sebelumnya
+                </button>
+                <div class="text-center">
+                    <p class="text-sm text-gray-600">Soal <span id="currentQuestionNumber">1</span> dari 10</p>
+                </div>
+                <button onclick="goToNextQuestion()" class="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition disabled:opacity-50" id="nextBtn">
+                    Berikutnya →
+                </button>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="mt-8 bg-yellow-50 border-2 border-yellow-200 rounded-lg p-6">
+                <p class="text-gray-700 mb-4">
+                    <strong>Perhatian:</strong> Pastikan Anda telah menjawab semua soal sebelum mengumpulkan jawaban. Anda tidak dapat mengubah jawaban setelah mengumpulkan!
+                </p>
+                <button type="submit" form="userForm" class="w-full px-6 py-3 bg-green-600 text-white rounded-lg font-bold text-lg hover:bg-green-700 transition">
+                    ✓ Kumpulkan Jawaban
+                </button>
+            </div>
+        </div>
+
+        <!-- Right Side: Question Navigator Panel -->
+        <div class="w-64">
+            <div class="sticky top-32 bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-800 mb-4">Navigasi Soal</h3>
+                <div class="grid grid-cols-5 gap-2" id="questionNavigator">
+                    <!-- Question buttons will be generated by JavaScript -->
+                </div>
+                
+                <div class="mt-6 pt-6 border-t border-gray-200">
+                    <p class="text-sm text-gray-600 mb-3"><strong>Keterangan:</strong></p>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 bg-gray-300 rounded border-2 border-gray-400"></div>
+                            <span class="text-gray-700">Belum dijawab</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 bg-green-500 rounded border-2 border-green-600"></div>
+                            <span class="text-gray-700">Sudah dijawab</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 bg-blue-500 rounded border-2 border-blue-600"></div>
+                            <span class="text-gray-700">Soal aktif</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-6 border-t border-gray-200">
+                    <div class="bg-blue-50 rounded-lg p-4">
+                        <p class="text-xs text-blue-700 font-semibold mb-2">💡 TIPS MENGERJAKAN</p>
+                        <ul class="text-xs text-blue-700 space-y-1 list-disc list-inside">
+                            <li>Baca soal dengan teliti</li>
+                            <li>Kelola waktu dengan baik</li>
+                            <li>Kerjakan soal yang mudah dulu</li>
+                            <li>Review sebelum submit</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Result Modal -->
+    <div id="resultModal" class="modal-backdrop" onclick="closeResultModal(event)">
+        <div class="modal-content modal-large" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <span>📊 Hasil Ujian Anda</span>
+                <button class="modal-close" onclick="closeResultModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <!-- Score Card -->
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 text-center border-2 border-blue-300">
+                        <p class="text-gray-600 font-semibold mb-2">Skor Anda</p>
+                        <p class="text-5xl font-bold text-blue-600 mb-2"><span id="finalScore">0</span>/10</p>
+                        <p class="text-2xl font-semibold text-blue-700" id="resultPercentage"></p>
+                    </div>
+
+                    <!-- Rating Card -->
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-6 text-center border-2 border-purple-300">
+                        <p class="text-gray-600 font-semibold mb-2">Penilaian</p>
+                        <p class="text-4xl mb-3" id="resultEmoji">😊</p>
+                        <p class="text-xl font-bold text-purple-700" id="resultMessage"></p>
+                    </div>
+
+                    <!-- Accuracy Card -->
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 text-center border-2 border-green-300">
+                        <p class="text-gray-600 font-semibold mb-2">Akurasi</p>
+                        <div class="mb-3">
+                            <div class="w-full bg-gray-300 rounded-full h-2 mb-2">
+                                <div id="accuracyBar" class="bg-green-500 h-2 rounded-full" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <p class="text-lg font-bold text-green-700"><span id="accuracyPercent">0</span>% Benar</p>
+                    </div>
+                </div>
+
+                <!-- Analysis Section -->
+                <div class="bg-gray-50 rounded-lg p-6 mb-6">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">📈 Analisis Jawaban</h3>
+                    <div id="answerReview" class="space-y-3 max-h-96 overflow-y-auto"></div>
+                </div>
+
+                <!-- Improvement Tips -->
+                <div class="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-6">
+                    <h3 class="text-lg font-bold text-blue-800 mb-3">💡 Tips Peningkatan</h3>
+                    <ul id="improvementTips" class="space-y-2 text-blue-700 list-disc list-inside"></ul>
+                </div>
+            </div>
+            <div class="modal-footer flex gap-3 justify-end">
+                <a href="index.html" class="px-6 py-2 bg-gray-600 text-white rounded-lg font-semibold hover:bg-gray-700 inline-block">← Kembali ke Home</a>
+                <button onclick="resetUser()" class="px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700">🔄 Coba Lagi</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-400 text-sm">
+                &copy; 2024 Belajar Bersama untuk Masa Depan. Semua hak dilindungi.
+            </p>
+        </div>
+    </footer>
+
+    <script src="user-script.js"></script>
+</body>
+
+</html>

@@ -355,3 +355,105 @@
 .modal-footer button:hover {
     color: #1e40af;
 }
+
+/* CAT Simulation Styles */
+.modal-large {
+    max-width: 900px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.question-container {
+    animation: fadeInUp 0.4s ease;
+}
+
+.option-label {
+    cursor: pointer;
+}
+
+.option-label:hover {
+    border-color: #2563eb !important;
+    background-color: #eff6ff !important;
+}
+
+.option-label input[type="radio"]:checked + span {
+    color: #1e40af;
+    font-weight: 600;
+}
+
+/* Disabled button state */
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+button:disabled:hover {
+    background-color: inherit;
+}
+
+/* Timer display */
+#timerDisplay {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+/* Answer counter */
+#answeredCount {
+    font-weight: bold;
+    color: #2563eb;
+}
+
+/* Question navigator grid */
+#questionNavigator {
+    gap: 0.5rem;
+}
+
+#questionNavigator button {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    min-width: 2rem;
+    border-radius: 0.375rem;
+    border: 2px solid;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#questionNavigator button:hover {
+    transform: scale(1.1);
+}
+
+/* Progress bar */
+#accuracyBar {
+    background: linear-gradient(90deg, #3b82f6 0%, #10b981 100%);
+    transition: width 0.3s ease;
+}
+
+/* Answer review styles */
+.border-green-300 {
+    border-color: #86efac;
+}
+
+.border-red-300 {
+    border-color: #fca5a5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .modal-large {
+        max-width: 100%;
+        margin: 20px;
+    }
+
+    .flex {
+        flex-wrap: wrap;
+    }
+
+    .w-64 {
+        width: 100%;
+        margin-top: 1rem;
+    }
+}
