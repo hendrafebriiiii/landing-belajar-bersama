@@ -2,44 +2,62 @@
 // DATA SIMULASI CAT IPS
 // ========================
 
-const answerKey = {
-    q1: 'b',  // Jakarta
-    q2: 'c',  // 34 Provinsi
-    q3: 'a',  // Soekarno dan Mohammad Hatta
-    q4: 'a',  // 17 Agustus 1945
-    q5: 'b',  // UUD 1945
-    q6: 'b',  // 5 Butir
-    q7: 'a',  // Soekarno
-    q8: 'a',  // Association of Southeast Asian Nations
-    q9: 'c',  // 1950
-    q10: 'b'  // Pemerintahan oleh rakyat
-};
+let answerKey = {};
+let questions = {};
+let answerOptions = {};
+let totalQuestions = 10;
 
-const questions = {
-    q1: 'Apa ibu kota Indonesia?',
-    q2: 'Berapa jumlah provinsi di Indonesia?',
-    q3: 'Siapa proklamator Indonesia?',
-    q4: 'Tanggal berapa Indonesia memproklamasikan kemerdekaannya?',
-    q5: 'Apa nama UUD yang digunakan saat ini?',
-    q6: 'Berapa banyak butir dalam Pancasila?',
-    q7: 'Siapa presiden Indonesia pertama?',
-    q8: 'Apa singkatan ASEAN?',
-    q9: 'Kapan Indonesia menjadi anggota PBB?',
-    q10: 'Apa arti demokrasi?'
-};
-
-const answerOptions = {
-    q1: { a: 'Surabaya', b: 'Jakarta', c: 'Bandung', d: 'Medan' },
-    q2: { a: '32 Provinsi', b: '33 Provinsi', c: '34 Provinsi', d: '35 Provinsi' },
-    q3: { a: 'Soekarno dan Mohammad Hatta', b: 'Diponegoro dan Imam Bonjol', c: 'Bung Tomo dan Sudirman', d: 'Gajah Mada dan Ken Arok' },
-    q4: { a: '17 Agustus 1945', b: '1 Juni 1945', c: '18 Agustus 1945', d: '20 Mei 1945' },
-    q5: { a: 'UUD 1950', b: 'UUD 1945', c: 'UUD 1959', d: 'UUD 1948' },
-    q6: { a: '4 Butir', b: '5 Butir', c: '6 Butir', d: '7 Butir' },
-    q7: { a: 'Soekarno', b: 'Mohammad Hatta', c: 'Suharto', d: 'B.J. Habibie' },
-    q8: { a: 'Association of Southeast Asian Nations', b: 'Asian Economic Collaboration Nations', c: 'Alliance of Southeast Asian Nations', d: 'Asiatic Southeast Agreement Nations' },
-    q9: { a: '1945', b: '1948', c: '1950', d: '1955' },
-    q10: { a: 'Pemerintahan oleh satu orang', b: 'Pemerintahan oleh rakyat', c: 'Pemerintahan oleh militer', d: 'Pemerintahan oleh agama' }
-};
+// Load questions from localStorage
+function loadQuestionsFromStorage() {
+    const savedQuestions = localStorage.getItem('catQuestions');
+    if (savedQuestions) {
+        const questionsObj = JSON.parse(savedQuestions);
+        const questionsArray = Object.values(questionsObj).sort((a, b) => a.number - b.number);
+        
+        totalQuestions = questionsArray.length;
+        answerKey = {};
+        questions = {};
+        answerOptions = {};
+        
+        questionsArray.forEach(q => {
+            const key = `q${q.number}`;
+            answerKey[key] = q.answer;
+            questions[key] = q.text;
+            answerOptions[key] = q.options;
+        });
+    } else {
+        // Default fallback data
+        answerKey = {
+            q1: 'b', q2: 'c', q3: 'a', q4: 'a', q5: 'b',
+            q6: 'b', q7: 'a', q8: 'a', q9: 'c', q10: 'b'
+        };
+        questions = {
+            q1: 'Apa ibu kota Indonesia?',
+            q2: 'Berapa jumlah provinsi di Indonesia?',
+            q3: 'Siapa proklamator Indonesia?',
+            q4: 'Tanggal berapa Indonesia memproklamasikan kemerdekaannya?',
+            q5: 'Apa nama UUD yang digunakan saat ini?',
+            q6: 'Berapa banyak butir dalam Pancasila?',
+            q7: 'Siapa presiden Indonesia pertama?',
+            q8: 'Apa singkatan ASEAN?',
+            q9: 'Kapan Indonesia menjadi anggota PBB?',
+            q10: 'Apa arti demokrasi?'
+        };
+        answerOptions = {
+            q1: { a: 'Surabaya', b: 'Jakarta', c: 'Bandung', d: 'Medan' },
+            q2: { a: '32 Provinsi', b: '33 Provinsi', c: '34 Provinsi', d: '35 Provinsi' },
+            q3: { a: 'Soekarno dan Mohammad Hatta', b: 'Diponegoro dan Imam Bonjol', c: 'Bung Tomo dan Sudirman', d: 'Gajah Mada dan Ken Arok' },
+            q4: { a: '17 Agustus 1945', b: '1 Juni 1945', c: '18 Agustus 1945', d: '20 Mei 1945' },
+            q5: { a: 'UUD 1950', b: 'UUD 1945', c: 'UUD 1959', d: 'UUD 1948' },
+            q6: { a: '4 Butir', b: '5 Butir', c: '6 Butir', d: '7 Butir' },
+            q7: { a: 'Soekarno', b: 'Mohammad Hatta', c: 'Suharto', d: 'B.J. Habibie' },
+            q8: { a: 'Association of Southeast Asian Nations', b: 'Asian Economic Collaboration Nations', c: 'Alliance of Southeast Asian Nations', d: 'Asiatic Southeast Agreement Nations' },
+            q9: { a: '1945', b: '1948', c: '1950', d: '1955' },
+            q10: { a: 'Pemerintahan oleh satu orang', b: 'Pemerintahan oleh rakyat', c: 'Pemerintahan oleh militer', d: 'Pemerintahan oleh agama' }
+        };
+        totalQuestions = 10;
+    }
+}
 
 // ========================
 // STATE MANAGEMENT
@@ -56,6 +74,7 @@ let examFinished = false;
 // ========================
 
 document.addEventListener('DOMContentLoaded', function() {
+    loadQuestionsFromStorage();
     initializeExam();
     renderQuestions();
     initializeNavigator();
@@ -65,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function initializeExam() {
     // Initialize user answers object
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= totalQuestions; i++) {
         userAnswers[`q${i}`] = null;
     }
 }
@@ -78,7 +97,7 @@ function renderQuestions() {
     const form = document.getElementById('userForm');
     let html = '';
 
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= totalQuestions; i++) {
         const questionKey = `q${i}`;
         const isHidden = i !== currentQuestion ? 'hidden' : '';
         
@@ -86,9 +105,9 @@ function renderQuestions() {
             <div class="question-container ${isHidden}" id="question-${i}" data-question="${i}">
                 <div class="bg-white rounded-lg shadow-lg p-8">
                     <div class="flex items-center justify-between mb-6">
-                        <h3 class="text-lg font-bold text-gray-800">Soal ${i} dari 10</h3>
+                        <h3 class="text-lg font-bold text-gray-800">Soal ${i} dari ${totalQuestions}</h3>
                         <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold">
-                            ${i === 1 ? '▶ MULAI' : i === 10 ? '🏁 AKHIR' : ''}
+                            ${i === 1 ? '▶ MULAI' : i === totalQuestions ? '🏁 AKHIR' : ''}
                         </span>
                     </div>
                     
@@ -125,7 +144,7 @@ function renderQuestions() {
 // ========================
 
 function goToNextQuestion() {
-    if (currentQuestion < 10) {
+    if (currentQuestion < totalQuestions) {
         saveCurrentAnswer();
         currentQuestion++;
         renderQuestions();
@@ -174,7 +193,7 @@ function updateNavigator() {
     const navigator = document.getElementById('questionNavigator');
     let html = '';
 
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= totalQuestions; i++) {
         const questionKey = `q${i}`;
         const isAnswered = userAnswers[questionKey] !== null;
         const isCurrent = i === currentQuestion;
@@ -250,7 +269,7 @@ function setupFormListeners() {
         
         // Validasi semua soal dijawab
         let allAnswered = true;
-        for (let i = 1; i <= 10; i++) {
+        for (let i = 1; i <= totalQuestions; i++) {
             if (userAnswers[`q${i}`] === null) {
                 allAnswered = false;
                 break;
@@ -288,7 +307,7 @@ function submitUser() {
     let answers = {};
 
     // Calculate score
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= totalQuestions; i++) {
         const questionKey = `q${i}`;
         const userAnswer = userAnswers[questionKey];
         answers[questionKey] = userAnswer;
@@ -307,7 +326,7 @@ function submitUser() {
 // ========================
 
 function displayResults(score, answers) {
-    const percentage = (score / 10) * 100;
+    const percentage = (score / totalQuestions) * 100;
     
     // Determine rating and emoji
     let message = '';
@@ -346,7 +365,7 @@ function displayResults(score, answers) {
     let correctTopics = [];
     let wrongTopics = [];
     
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= totalQuestions; i++) {
         const questionKey = `q${i}`;
         const userAnswer = answers[questionKey];
         const correctAnswer = answerKey[questionKey];
