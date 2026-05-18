@@ -576,11 +576,13 @@ function saveQuestion(event) {
             };
         }
     } else {
-        // Create new question
-        const newId = 'q' + (Object.keys(questionsObj).length + 1);
+        // Create new question - use the next number as ID
+        const questionsArray = Object.values(questionsObj).sort((a, b) => a.number - b.number);
+        const nextNumber = questionsArray.length > 0 ? Math.max(...questionsArray.map(q => q.number)) + 1 : 1;
+        const newId = 'q' + nextNumber;
         questionsObj[newId] = {
             id: newId,
-            number: number,
+            number: nextNumber,
             text: text,
             options: { a: optionA, b: optionB, c: optionC, d: optionD },
             answer: correctAnswer
@@ -639,6 +641,23 @@ function confirmDeleteQuestion() {
     const key = Object.keys(questionsObj).find(k => questionsObj[k].id === questionToDelete);
     if (key) {
         delete questionsObj[key];
+        
+        // Renumber remaining questions to avoid gaps
+        const questionsArray = Object.values(questionsObj).sort((a, b) => a.number - b.number);
+        questionsObj = {};
+        
+        questionsArray.forEach((question, index) => {
+            const newNumber = index + 1;
+            const newId = `q${newNumber}`;
+            questionsObj[newId] = {
+                id: newId,
+                number: newNumber,
+                text: question.text,
+                options: question.options,
+                answer: question.answer
+            };
+        });
+        
         localStorage.setItem('catQuestions', JSON.stringify(questionsObj));
     }
 
